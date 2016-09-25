@@ -5,6 +5,11 @@ using Owin;
 using System.Web.Http;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens;
+using Microsoft.Practices.Unity;
+using Unity.WebApi;
+using Core.Models;
+using Core;
+using Product.DataContext;
 
 [assembly: OwinStartup(typeof(MyWebAPI.Startup1))]
 
@@ -14,21 +19,27 @@ namespace MyWebAPI
     {
         public void Configuration(IAppBuilder app)
         {
-            JwtSecurityTokenHandler.InboundClaimTypeMap = new Dictionary<string, string>();
-            // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=316888
-            app.UseIdentityServerBearerTokenAuthentication(new IdentityServer3.AccessTokenValidation.IdentityServerBearerTokenAuthenticationOptions
-            {
-                Authority = "https://localhost:44302/identity",
-                RequiredScopes = new List<string>
-                {
-                    "testScope"
-                }
-            });
+            //JwtSecurityTokenHandler.InboundClaimTypeMap = new Dictionary<string, string>();
+            //// For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=316888
+            //app.UseIdentityServerBearerTokenAuthentication(new IdentityServer3.AccessTokenValidation.IdentityServerBearerTokenAuthenticationOptions
+            //{
+            //    Authority = "https://localhost:44302/identity",
+            //    RequiredScopes = new List<string>
+            //    {
+            //        "testScope"
+            //    }
+            //});
 
 
 
             HttpConfiguration configuration = new HttpConfiguration();
+            
             configuration.Routes.MapHttpRoute("DefaultRoute","api/{controller}/{id}",new  {id = RouteParameter.Optional});
+
+            var container = new UnityContainer();
+            container.RegisterType<IUnitOfWork, ProductUOW>();
+            container.RegisterType<ProductContext, ProductContext>();
+            configuration.DependencyResolver = new UnityDependencyResolver(container);
 
             app.UseWebApi(configuration);
 

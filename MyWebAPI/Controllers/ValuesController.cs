@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Core;
+using Core.VM;
+using Product.DataContext;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -9,17 +12,74 @@ namespace MyWebAPI.Controllers
 {
     public class ValuesController : ApiController
     {
-        // GET: api/Values
-        public IEnumerable<string> Get()
+        IUnitOfWork productUow = null;
+
+        public ValuesController(IUnitOfWork productUow)
         {
-            return new string[] { "value1", "value2" };
+            this.productUow = productUow;
+
+        }
+        // GET: api/Values
+        //public IHttpActionResult Get()
+        //{
+
+        //    try
+        //    {
+        //        var r = productUow.Customers.Get();
+        //        var result = r.Where(rr => rr.Id > 0).Select(n => new 
+        //        {
+        //            IdVal = n.Id,
+        //            TEstName = n.Name
+
+        //        }).ToList();
+        //        return Ok(result);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex.Message);
+        //    }
+        //    return NotFound();
+
+        //}
+
+
+        //public IEnumerable<object> Get()
+        //{
+        //    try
+        //    {
+        //        var r = productUow.Customers.Get();
+        //        var result = r.Where(rr => rr.Id > 0).Select(n => new
+        //        {
+        //            IdVal = n.Id,
+        //            TEstName = n.Name
+
+        //        }).ToList();
+        //        return result;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex.Message);
+        //    }
+        //    return null;
+        //}
+
+
+        public IHttpActionResult Get()
+        {
+            var r = productUow.Customers.Get();
+            var result = r.Where(rr => rr.Id > 0).Select(n => new CustomerVM
+            {
+                ID = n.Id,
+                Name = n.Name
+            }).ToList();
+            return Ok(result);
         }
 
         // GET: api/Values/5
-        [Authorize]
-        public string Get(int id)
+        //[Authorize]
+        public IHttpActionResult Get(int id)
         {
-            return "value";
+            return NotFound();
         }
 
         // POST: api/Values

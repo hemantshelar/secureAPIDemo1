@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -9,6 +10,11 @@ namespace MyWebAPI.Controllers
 {
     public class ManageUserController : ApiController
     {
+        IUnitOfWork productUow = null;
+        public ManageUserController(IUnitOfWork productUow)
+        {
+            this.productUow = productUow;
+        } 
         // GET: api/ManageUser
         public IEnumerable<string> Get()
         {

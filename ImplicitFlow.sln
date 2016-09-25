@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImplicitFlow", "ImplicitFlo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWebAPI", "MyWebAPI\MyWebAPI.csproj", "{C2ED75DA-551F-4FF8-835E-A79176DAB4A9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{D3A51B53-BF38-495E-98A6-91113EF1A3A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Product.DataContext", "Product.DataContext\Product.DataContext.csproj", "{DE8BE305-9368-41F8-AF85-93273E3A945D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{C2ED75DA-551F-4FF8-835E-A79176DAB4A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2ED75DA-551F-4FF8-835E-A79176DAB4A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2ED75DA-551F-4FF8-835E-A79176DAB4A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3A51B53-BF38-495E-98A6-91113EF1A3A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3A51B53-BF38-495E-98A6-91113EF1A3A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3A51B53-BF38-495E-98A6-91113EF1A3A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3A51B53-BF38-495E-98A6-91113EF1A3A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE8BE305-9368-41F8-AF85-93273E3A945D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE8BE305-9368-41F8-AF85-93273E3A945D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE8BE305-9368-41F8-AF85-93273E3A945D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE8BE305-9368-41F8-AF85-93273E3A945D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
