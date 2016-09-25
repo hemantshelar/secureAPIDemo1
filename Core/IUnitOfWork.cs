@@ -10,6 +10,10 @@ namespace Core
     public interface IUnitOfWork 
     {
         IRepository<Customer> Customers{get;}
+        IRepository<Diary> Diaries { get; }
+        IRepository<Notes> Notes { get; }
+        IRepository<Notification> Notifications { get; }
+
         void Save();
     }
 }
